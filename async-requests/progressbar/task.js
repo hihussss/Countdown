@@ -11,10 +11,11 @@ const fileInput = document.getElementById('file');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    
-    const formData = new FormData(form);
+    const fileToUpload = fileInput.files[0]
+    const formData = new FormData();
     const xht =new XMLHttpRequest();
 
+formData.append('uploadForm_File', fileToUpload)
 
 xht.upload.addEventListener('progress',  function(event) {
     const percentLoaded = Math.round((event.loaded / event.total) * 100)
