@@ -15,7 +15,7 @@ xht.send();
 
 xht.addEventListener('readystatechange', () => {
 
-    if (xht.readyState === xht.DONE) {
+    if (xht.status == 200 && xht.readyState == xht.DONE) {
 
         console.log(xht.responseText);
         const data = JSON.parse(xht.responseText); 
@@ -38,6 +38,10 @@ xht.addEventListener('readystatechange', () => {
 
         })
 
+    }else if(xht.status == 404 && xht.readyState == xht.DONE){
+        alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+    }else if(xht.status == 500 && xht.readyState == xht.DONE){
+        alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
     }
     
     
